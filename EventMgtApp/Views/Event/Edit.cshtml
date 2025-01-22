@@ -1,0 +1,73 @@
+﻿@using EventMgtApp.Enum
+@using EventMgtApp.ViewModel
+@model Event
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<section class="space-sm">
+    <div class="container mt-5">
+        <h2 class="mb-4">Edit Your Registration</h2>
+
+        <form asp-action="Edit" method="post">
+            <div class="mb-3">
+                <input type="hidden" asp-for="Id" />
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Title" class="form-label">Event Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="Enter event title" required />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Type" class="form-label">Event Type</label>
+                    <input asp-for="Type" class="form-control" placeholder="Conference, Workshop, etc." />
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Event Description</label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Describe your event"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="StartDate" class="form-label">Start Date</label>
+                    <input asp-for="StartDate" type="datetime-local" class="form-control" required />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="EndDate" class="form-label">End Date</label>
+                    <input asp-for="EndDate" type="datetime-local" class="form-control" required />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Location" class="form-label">Event Location</label>
+                    <input asp-for="Location" class="form-control" placeholder="Enter event location" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="FormatType" class="form-label">Format Type</label>
+                    <select asp-for="FormatType" asp-items="Html.GetEnumSelectList<FormatType>()" class="form-select">
+                        <option value="">Select Format Type</option>
+                    </select>
+                    <span asp-validation-for="FormatType" class="text-danger"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Edit Event</button>
+        </form>
+    </div>
+
+    <!--end of container-->
+</section>
